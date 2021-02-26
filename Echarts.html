@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <!-- 引入 ECharts 文件 -->
+    <script src="echarts.min.js"></script>
+    <script src = "world.js"></script>
+</head>
+
+<body>
+<!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+<div id="main" style="width: 1280px;height:720px;"></div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+
+    // 指定图表的配置项和数据
+    var name_title = "新型冠状病毒疫情世界地图"
+    var mapName = 'world'
+    var data = [
+        //{ name: 'China', value: 7830 },
+
+        {name: "Iran", value: 1607081},
+        {name: "Indonesia", value: 1243646},
+        {"name": "India", "value": 10937320},
+        {"name": "Kazakhstan", "value": 251959},
+        {"name": "Lebanon", "value": 343601}, {"name": "Turkey", "value": 2609359}, {"name": "Israel", "value": 738629}, {"name": "Bangladesh", "value": 541877}, {"name": "Malaysia", "value": 274875}, {"name": "Palestine", "value": 65802}, {"name": "Philippines", "value": 555163}, {"name": "Cyprus", "value": 32707}, {"name": "Iraq", "value": 653557}, {"name": "Pakistan", "value": 567261}, {"name": "Japan", "value": 420408}, {"name": "Jordan", "value": 352219}, {"name": "United Arab Emirates", "value": 361877}, {"name": "Kuwait", "value": 180505}, {"name": "Qatar", "value": 159053}, {"name": "Korea", "value": 85567}, {"name": "Myanmar", "value": 141690}, {"name": "Bahrain", "value": 114361}, {"name": "Oman", "value": 137929}, {"name": "Sri Lanka", "value": 77906}, {"name": "Syria", "value": 14951}, {"name": "Armenia", "value": 169597}, {"name": "Afghanistan", "value": 55540}, {"name": "Georgia", "value": 266948}, {"name": "Saudi Arabia", "value": 373702}, {"name": "Maldives", "value": 18082}, {"name": "Azerbaijan", "value": 232337}, {"name": "Kyrgyzstan", "value": 85619}, {"name": "Nepal", "value": 273166}, {"name": "Republic of Yemen", "value": 2152}, {"name": "Thailand", "value": 25111}, {"name": "China", "value": 101614}, {"name": "Uzbekistan", "value": 79497}, {"name": "Vietnam", "value": 2329}, {"name": "Mongolia", "value": 2448}, {"name": "Tajikistan", "value": 13714}, {"name": "Singapore", "value": 59810}, {"name": "Timor-Leste", "value": 102}, {"name": "Cambodia", "value": 479}, {"name": "Bhutan", "value": 866}, {"name": "Brunei", "value": 184}, {"name": "Laos", "value": 45}, {"name": "United Kingdom", "value": 4071185}, {"name": "France", "value": 3514147}, {"name": "Spain", "value": 3107172}, {"name": "Netherlands", "value": 1038156}, {"name": "Belgium", "value": 743882}, {"name": "Sweden", "value": 622102}, {"name": "Serbia", "value": 490582}, {"name": "Italy", "value": 2751657}, {"name": "Russia", "value": 4125598}, {"name": "Switzerland", "value": 545535}, {"name": "Poland", "value": 1614446}, {"name": "Ireland", "value": 211751}, {"name": "Slovenia", "value": 180507}, {"name": "Greece", "value": 173905}, {"name": "Germany", "value": 2362352}, {"name": "Ukraine", "value": 1287141}, {"name": "Czech Republic", "value": 1123252}, {"name": "Portugal", "value": 790885}, {"name": "Hungary", "value": 394023}, {"name": "Romania", "value": 768785}, {"name": "Albania", "value": 95726}, {"name": "Bulgaria", "value": 233342}, {"name": "Slovakia", "value": 285419}, {"name": "Finland", "value": 51595}, {"name": "BIH", "value": 126413}, {"name": "Austria", "value": 437874}, {"name": "Norway", "value": 67498}, {"name": "Lithuania", "value": 192193}, {"name": "Estonia", "value": 55295}, {"name": "Latvia", "value": 77697}, {"name": "Moldova", "value": 172815}, {"name": "Montenegro", "value": 69694}, {"name": "Belarus", "value": 273659}, {"name": "Northern Macedonia", "value": 97803}, {"name": "Denmark", "value": 205597}, {"name": "Luxembourg", "value": 53062}, {"name": "Malta", "value": 20246}, {"name": "Croatia", "value": 238866}, {"name": "Andorra", "value": 10555}, {"name": "San Marino", "value": 3352}, {"name": "Monaco", "value": 1787}, {"name": "Guernsey", "value": 806}, {"name": "Liechtenstein", "value": 2615}, {"name": "Gibraltarian", "value": 4226}, {"name": "Jersey", "value": 3207}, {"name": "Iceland", "value": 6044}, {"name": "Isle of man", "value": 437}, {"name": "Faroe Islands", "value": 658}, {"name": "vatican", "value": 29}, {"name": "United States", "value": 27826815}, {"name": "Mexico", "value": 2013563}, {"name": "Puerto Rico", "value": 98317}, {"name": "Honduras", "value": 162584}, {"name": "Dominican", "value": 231095}, {"name": "Canada", "value": 834182}, {"name": "Costa Rica", "value": 200888}, {"name": "Panama", "value": 333755}, {"name": "Guatemala", "value": 168103}, {"name": "Jamaica", "value": 19773}, {"name": "Cuba", "value": 39941}, {"name": "El Salvador", "value": 58023}, {"name": "Haiti", "value": 12206}, {"name": "Nicaragua", "value": 6347}, {"name": "Bahamas", "value": 8383}, {"name": "Barbados", "value": 2331}, {"name": "Belize", "value": 12188}, {"name": "Trinidad and Tobago", "value": 7646}, {"name": "Dominica", "value": 134}, {"name": "Montserrat", "value": 20}, {"name": "Bermuda", "value": 695}, {"name": "Greenland", "value": 30}, {"name": "Brazil", "value": 9979276}, {"name": "Argentina", "value": 2039071}, {"name": "Peru", "value": 1252137}, {"name": "Colombia", "value": 2207701}, {"name": "Bolivia", "value": 238495}, {"name": "Ecuador", "value": 268219}, {"name": "Chile", "value": 784314}, {"name": "Paraguay", "value": 147253}, {"name": "Venezuela", "value": 133927}, {"name": "Uruguay", "value": 50208}, {"name": "Guyana", "value": 8262}, {"name": "Suriname", "value": 8832}, {"name": "South Africa", "value": 1496439}, {"name": "Tunisia", "value": 224329}, {"name": "Algeria", "value": 111069}, {"name": "Egypt", "value": 175677}, {"name": "Uganda", "value": 40102}, {"name": "Nigeria", "value": 149369}, {"name": "Mozambique", "value": 52629}, {"name": "Ethiopia", "value": 149308}, {"name": "Kenya", "value": 103332}, {"name": "Malawi", "value": 29634}, {"name": "Swaziland", "value": 16606}, {"name": "Morocco", "value": 479579}, {"name": "Ghana", "value": 77748}, {"name": "Lesotho", "value": 10350}, {"name": "Sudan", "value": 30078}, {"name": "Senegal", "value": 31476}, {"name": "Botswana", "value": 25802}, {"name": "Zimbabwe", "value": 35315}, {"name": "Cameroon", "value": 32098}, {"name": "Rwanda", "value": 17594}, {"name": "Mali", "value": 8241}, {"name": "Namibia", "value": 36366}, {"name": "Somalia", "value": 5373}, {"name": "Benin", "value": 5039}, {"name": "Sierra Leone", "value": 3825}, {"name": "Gabon", "value": 12865}, {"name": "Angola", "value": 20389}, {"name": "Guinea", "value": 15020}, {"name": "Eritrea", "value": 2566}, {"name": "Togo", "value": 5953}, {"name": "Burkina Faso", "value": 11630}, {"name": "Gambia", "value": 4469}, {"name": "Seychelles", "value": 1987}, {"name": "Comoros", "value": 3558}, {"name": "Madagascar", "value": 19598}, {"name": "Niger", "value": 4706}, {"name": "Chad", "value": 3689}, {"name": "Cape Verde", "value": 14785}, {"name": "Mauritania", "value": 17016}, {"name": "Tanzania", "value": 509}, {"name": "Liberia", "value": 1985}, {"name": "Djibouti", "value": 5981}, {"name": "Mauritius", "value": 603}, {"name": "Australia", "value": 28911}, {"name": "Papua New Guinea", "value": 955}, {"name": "New Zealand", "value": 2307}, {"name": "New Caledonia", "value": 52}, {"name": "Fiji", "value": 56}
+
+    ];
+
+    var option = {
+        title: {
+            text: name_title,
+            x: 'center',
+            textStyle: {
+                fontSize: 24
+            },
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: function(params) {
+                var toolTiphtml = ''
+                if (isNaN(params.value)){
+                    toolTiphtml = params.name + '确诊: 0例';
+                }
+                else{
+                    toolTiphtml = params.name + '确诊: ' + params.value + '例';
+                }
+                //console.log(toolTiphtml)
+                return toolTiphtml;
+            }
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        visualMap: {
+            show: true,
+            left: 'left',
+            top: 'bottom',
+            seriesIndex: [0],
+            type:'piecewise',
+            pieces:[
+                {min:200000, color: 'rgb(254,57,101)'},
+                {min:150000, max:199999, color: 'rgb(252,157,154)'},
+                {min:100000, max:149999, color: 'rgb(249,205,173)'},
+                {min:10000, max:99999, color: 'rgb(200,200,169)'},
+                {min:0, max:9999, color: 'rgb(131,175,155)'}
+            ],
+            textStyle: {
+                color: '#000000'
+            }
+        },
+        geo: {
+            show: true,
+            map: mapName,
+            label: {
+                normal: {
+                    show: false,
+                    fontSize:12,
+                },
+                emphasis: {
+                    show: false,
+                }
+            },
+            roam: true,
+            itemStyle: {
+                normal: {
+                    areaColor: '#F6F6F6',
+                    borderColor: '#666666',
+                },
+                emphasis: {
+                    areaColor: '#0099CC',
+                }
+            }
+        },
+        series: [
+            {
+                type: 'map',
+                map: mapName,
+                geoIndex: 0,
+                animation: false,
+                data: data
+            },
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+</script>
+</body>
+</html>
